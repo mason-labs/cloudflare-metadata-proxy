@@ -52,7 +52,7 @@ const keyint = await parseInt(key.split('.')[0])
   // metadata file and prepares it for processing
 if(key.split('.')[1] == 'json'){
 
-  let meta = await fetch(`https://ipfs.unstoppable.gallery/ipfs/QmWJvJnW75GqqBCQ4wbHYFGbcvkb5ydg3QPgM8x7FNSN9F/${keyint}.json`, 
+  let meta = await fetch(`https://ipfs.unstoppable.gallery/ipfs/QmWJvJnW75GqqBCQ4wbHYFGbcvkb5ydg3QPgM8x7FNSN9F/${keyint}.json`, //you can replace this with your own metadata location
   {
     method: 'GET',
     headers: {
@@ -69,7 +69,7 @@ if(key.split('.')[1] == 'json'){
 // hidden metdata file is fine to show as is. 
 
   if(revealed==true){
-  metaj.image = `https://wart.unstoppable.gallery/${keyint}.png`
+  metaj.image = `https://wart.unstoppable.gallery/${keyint}.png` // you can replace this with your own image location
   }
 
   // below, we stringify the object so that it can be sent back in a Response 
