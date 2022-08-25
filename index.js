@@ -35,18 +35,29 @@ const provider = new ethers.providers.StaticJsonRpcProvider(
 
 // the key is taken from the url pathname  )
 
+
 const key =  url.pathname.slice(1);
 
 // the keyint variable takes the key, which is the file name, and converts the numerical part into an actual integer
+
+
+if(!key.includes(`png`) && !key.includes(`json`)){
+
+return new Response(`Please enter a valid file name. You can query for a png or json file. Use a forward slash after the URL.`, {status: 400})
+}
 
 const keyint = await parseInt(key.split('.')[0])
 
 
 
+
     //we pass the keyint (corresonding to the token ID) to the contract tokenURI method, which returns the tokenURI (metadata location) for that ID
     //the reason it's called minted is that it will return an error if the token is not minted
-  const minted = await contract.tokenURI(keyint)
+
+    const minted = await contract.tokenURI(keyint)
   
+
+
 
   //if statement below applies conditional logic to check if the request is for a metadata file. If yes, it pulls the
   // metadata file and prepares it for processing
@@ -68,7 +79,7 @@ if(key.split('.')[1] == 'json'){
 // the metdata file back to the client. If not, we send the metadata file back to the client without any changes, becuase the
 // hidden metdata file is fine to show as is. 
 
-  if(revealed==true){
+  if(revealed==true && metaj !==undefined){
   metaj.image = `https://wart.unstoppable.gallery/${keyint}.png` // you can replace this with your own image location
   }
 
@@ -81,10 +92,12 @@ if(key.split('.')[1] == 'json'){
 
 }
 
+    
+
+else{
 // if the request is for a png file, we process the png file from its original location and send it back to the client so that
 // is served from the worker URL, and not directly from the IPFS URL, which we want to keep hidden until we decide it is safe to reveal
 
-else{
 
     
   if(key.split('.')[1] == 'png'){
@@ -121,10 +134,13 @@ return new Response(imgreq, {headers: {'content-type': 'image/png'}})
 
 
 
+
 }
 
 }
   catch(error){
+
+
 
  
   
@@ -134,6 +150,7 @@ if(error.code=="INVALID_ARGUMENT"){
       })
     
 }
+
 
     return new Response(JSON.stringify({error}), {
       headers: { 'content-type': 'application/json' },
