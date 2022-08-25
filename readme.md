@@ -6,11 +6,13 @@ It protects the metadata (and true file location) of un-minted tokens by only se
 
 It's easier to understand what it does by visiting [the deployed worker itself](https://wart.unstoppable.gallery/1.json) and viewing a JSON file. 
 
-Aside from serving JSON files for metadata, the worker also serves the images pointed to by the metadata.The image below is served from a worker deployed using the codebase in this repo:
+Aside from serving JSON files for metadata, the worker also serves the images pointed to by the metadata. 
+
+Below image was originally obtained from: wart.unstoppable.gallery/4.png.
+
 
 ![image from worker](https://wart.unstoppable.gallery/4.png)
 
-Above image is obtained from: wart.unstoppable.gallery/4.png.
 
 **How it works:**
 
