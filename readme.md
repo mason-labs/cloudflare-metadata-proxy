@@ -22,6 +22,6 @@ The worker will take that requested url, pull the metadata from the IPFS folder 
 
 The default location of the metadata in this project exists, as does the contract on polygon. There is a flaw intentionally placed into one file (the file served when the contract metadata state is "hidden"), so that we can demonstrate the vulnerabilities introduced by carelessly leaving a CID in plain view. 
 
-Until there is a release versio 1.0 on the right side of the github repo, please consider this a preview version that may contain bugs. 
+Until there is a release version 1.0 on the right side of the github repo, please consider this a preview version that may contain bugs. 
 
 It is designed to work well with contracts such as the Hashlips Lab ERC 721 NFT contract, as well as any contract that uses the ERC 721 standard. Enjoy!
